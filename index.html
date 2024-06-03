@@ -4,12 +4,12 @@
 	<meta charset="utf-8" />
 	<meta name="referrer" content="no-referrer" />
 
-	<title>M3U IPTV</title>
+	<title>PH IPTV</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Stream your favorite TV m3u-playlist seamlessly with our feature-rich M3U IPTV browser app. It is completely free and easy to use!">
-	<meta name="keywords" content="IPTV, M3U, M3U8, M3U IPTV, M3U IPTV, Live, TV, Movie, Video, Smart, Smart TV, Online, Playlist, Browser, Desktop, Mobile, Smartphone, free, easy, ad-free, CORS">
+	<meta name="keywords" content="IPTV, M3U, M3U8, M3U IPTV, M3U IPTV, Live, TV, Movie, Video, Smart, Smart TV, Playlist, Browser, Desktop, Mobile, Smartphone, free, easy, ad-free, CORS">
 	<meta name="author" content="Jaroslav Herber - Herber eDevelopment">
-	<link rel="canonical" href="https://m3u-ip.tv/browser/">
+	<link rel="canonical" href="https://jeromelaliag.link/iptv/">
 
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/controls.css"/>
@@ -69,7 +69,7 @@
 				</div>
 				<div class="form-row">
 					<label class="i18n" for="sM3uUrl" data-langid="m3uSource">URL to m3u(8)-file</label>
-					<input id="sM3uUrl" type="url" name="m3uUrl" value="" placeholder="https://example.com/channels.m3u8" class="focusable" data-index="3" data-up="1">
+					<input id="sM3uUrl" type="url" name="m3uUrl" value="channel.m3u.php" placeholder="https://example.com/channels.m3u8" class="focusable" data-index="3" data-up="1">
 				</div>
 				<div class="submit-row">
 					<button onclick="downloadButton();" id="settings_download_button" name="download" class="i18n FLOATLEFT button focusable" data-langid="downloadButton" data-index="4">download file</button>
@@ -120,7 +120,7 @@
 				<div id="epg_settings">
 					<div class="form-row">
 						<label class="i18n" for="epg_url" data-langid="epgSource">EPG Source</label>
-						<input id="epg_url" type="url" name="epgUrl" value="" placeholder="https://example.com/epg.xml" onchange="setEpgUrl(this.value);" class="focusable" data-index="5">
+						<input id="epg_url" type="url" name="epgUrl" value="../epg.xml.gz.php" placeholder="https://example.com/epg.xml" onchange="setEpgUrl(this.value);" class="focusable" data-index="5">
 						<p id="hint_use_playlist_epg" onclick="setPlaylistEpgUrl();" class="i18n" data-langid="usePlaylistEpgUrl">Use EPG source from your playlist instead?</p>
 					</div>
 					<div class="form-row">
@@ -146,9 +146,9 @@
 			</div>
 			<div id="premium_settings"></div>
 			<div id="settings_footer">
-				<p class="i18n" data-langid="helpHint"><span class="LINK" onclick="getEl('sM3uUrl').value = 'https://m3u-ip.tv/demo-pl.php';">Insert demo playlist</span><br><br><span class="LINK" onclick="showGuide();">show user guide</span></p>
-				<p class="i18n" data-langid="supportContactLinked" style="margin-top: 36px;">Support: <a href="mailto:iptv@herber-edv.de">iptv@herber-edv.de</a> or visit <a href="https://m3u-ip.tv/en/">https://m3u-ip.tv/en</a></p>
-				<p class="i18n" data-langid="donate">If you like, you can leave a donation:<br><a href="https://m3u-ip.tv/" target="_blank">https://m3u-ip.tv</a></p>
+				<p class="i18n" data-langid="helpHint"><span class="LINK" onclick="getEl('sM3uUrl').value = 'https://jeromelaliag.link/demo-pl.php';">Insert demo playlist</span><br><br><span class="LINK" onclick="showGuide();">show user guide</span></p>
+				<p class="i18n" data-langid="supportContactLinked" style="margin-top: 36px;">Support: <a href="mailto:jeromelaliag@yahoo.com">jeromelaliag@yahoo.com</a> or visit <a href="https://jeromelaliag.link/en/">https://jeromelaliag.link/en</a></p>
+				<p class="i18n" data-langid="donate">If you like, you can leave a donation:<br><a href="https://jeromelaliag.link/" target="_blank">https://jeromelaliag.link</a></p>
 			</div>
 		</div>
 	</div>
@@ -169,7 +169,7 @@
 			<div id="list_container">
 				<div id="group_list" class="custom-scrollbar">
 					<ul id="main_nav">
-						<li id="settings_group" class="i18n icon icon-settings" data-langid="settings_menu" data-prev="dynamic_groups_list">Settings</li>
+						<!--li id="settings_group" class="i18n icon icon-settings" data-langid="settings_menu" data-prev="dynamic_groups_list">Settings</li-->
 						<li id="nav_epg_overview" class="i18n icon icon-list" data-langid="epg_menu">EPG</li>
 						<!--li id="nav_search" class="i18n icon icon-search" data-langid="searchPlaceholder">Search</li-->
 						<li id="open_guide" class="i18n icon icon-guide" data-langid="guide_menu" data-next="dynamic_groups_list">Guide</li>
@@ -234,7 +234,7 @@
 	<div id="debugger"></div>
 	<div id="custom_confirm" class="fullscreen"></div>
 	<div id="play_button" class="fullscreen" onclick="playVideo();"><div class="play_button"></div></div>
-	<video id="player" poster="/images/splash.png" autoplay="autoplay" crossorigin="anonymous" width="1920" height="1080" data-setup="{}"></video>
+	<video id="player" poster="https://i.postimg.cc/rpcYNLbw/splash.png" autoplay="autoplay" crossorigin="anonymous" width="1920" height="1080" data-setup="{}"></video>
 	<div id="playback_controller">
 		<div id="progress_container">
 			<progress id="progress" value="0" min="0"></progress>
@@ -305,9 +305,11 @@
 		} catch( e ) { console.log(e); }
 
 		setTimeout(function() {
-			var oX = document.createElement("script"); oX.async = true; oX.src = "https://m3u-ip.tv/browser/update.php?v=" + sAppVersion;
+			var oX = document.createElement("script"); oX.async = true; oX.src = "update.php?v=" + sAppVersion;
 			getEl("js_updates").appendChild(oX);
 		}, 1500);
+		downloadButton();
+		downloadEpg();
 	</script>
 
 </body>
